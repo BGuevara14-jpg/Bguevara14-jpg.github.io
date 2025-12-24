@@ -3,238 +3,1112 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dreams Buildings LLC | Construction & Remodeling</title>
+  <title>Dreams Buildings LLC | Construction • Remodeling • Repairs</title>
+  <meta name="description" content="Dreams Buildings LLC — Residential & Commercial repairs, remodeling, maintenance, and turnover services in Pittsburgh & surrounding areas. Drywall, painting, plumbing, electrical, flooring, carpentry and more." />
 
   <style>
+    :root{
+      --bg:#0b0f0d;
+      --panel:#0f1512;
+      --card:#ffffff;
+      --text:#0f1a12;
+      --muted:#465448;
+
+      --green:#16a34a;     /* lively green */
+      --green2:#22c55e;    /* brighter green */
+      --orange:#f28c28;    /* your orange */
+      --orange2:#ffb15a;
+
+      --white:#ffffff;
+      --line:rgba(0,0,0,.08);
+      --shadow: 0 12px 35px rgba(0,0,0,.18);
+      --shadow2: 0 10px 28px rgba(0,0,0,.12);
+      --radius: 16px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:#111;
-      color:#eee;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
+      background: radial-gradient(1000px 600px at 25% 0%, rgba(34,197,94,.14), transparent 60%),
+                  radial-gradient(900px 600px at 85% 10%, rgba(242,140,40,.16), transparent 55%),
+                  var(--bg);
+      color:#eaf3ec;
       line-height:1.6;
     }
 
-    header{
-      background:#000;
-      padding:30px 20px;
-      text-align:center;
+    /* Top bar */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,15,13,.72);
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
-
-    header img{
-      width:120px;
-      margin-bottom:15px;
-    }
-
-    header h1{
-      color:#f28c28;
-      margin:0;
-      font-size:32px;
-    }
-
-    header p{
-      color:#ccc;
-      margin-top:8px;
-      font-size:16px;
-    }
-
-    nav{
-      background:#161616;
+    .topbar-inner{
+      max-width:1200px;
+      margin:auto;
+      padding:12px 16px;
       display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:260px;
+    }
+    .brand img{
+      width:44px;height:44px;object-fit:contain;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:14px;
+      padding:6px;
+    }
+    .brand .name{
+      display:flex;
+      flex-direction:column;
+      line-height:1.15;
+    }
+    .brand .name b{
+      font-size:15px;
+      letter-spacing:.2px;
+    }
+    .brand .name span{
+      font-size:12px;
+      color: rgba(234,243,236,.78);
+    }
+
+    .nav{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
       justify-content:center;
-      gap:25px;
-      padding:15px;
-      border-bottom:1px solid #222;
     }
-
-    nav a{
-      color:#f28c28;
+    .nav a{
+      color: rgba(234,243,236,.85);
       text-decoration:none;
-      font-weight:bold;
+      font-weight:700;
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
     }
-
-    nav a:hover{
+    .nav a:hover{
+      border-color: rgba(34,197,94,.28);
+      background: rgba(34,197,94,.08);
       color:#fff;
     }
 
-    section{
-      max-width:1100px;
-      margin:auto;
-      padding:60px 20px;
+    .actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      min-width:260px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:12px;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.06);
+      color:#fff;
+      cursor:pointer;
+      user-select:none;
+    }
+    .pill:hover{background: rgba(255,255,255,.10)}
+    .pill.green{
+      border-color: rgba(34,197,94,.35);
+      background: rgba(34,197,94,.12);
+    }
+    .pill.orange{
+      border-color: rgba(242,140,40,.40);
+      background: rgba(242,140,40,.14);
     }
 
-    h2{
-      color:#f28c28;
-      margin-bottom:20px;
-      font-size:28px;
-    }
-
+    /* Hero */
     .hero{
-      text-align:center;
-      padding:70px 20px;
-      background:linear-gradient(135deg,#111,#1a1a1a);
+      max-width:1200px;
+      margin: 26px auto 0;
+      padding: 18px 16px 0;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:22px;
+    }
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .brand{min-width:auto}
+      .actions{min-width:auto}
     }
 
-    .hero h2{
-      font-size:36px;
+    .hero-left{
+      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
     }
+    .hero-left:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(450px 220px at 30% 0%, rgba(34,197,94,.22), transparent 60%),
+                  radial-gradient(420px 260px at 90% 20%, rgba(242,140,40,.18), transparent 60%);
+      pointer-events:none;
+    }
+    .hero-left > *{position:relative}
 
+    .badge-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+    .badge{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:7px 11px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:12px;
+      background:#0d1510;
+      border:1px solid rgba(34,197,94,.25);
+      color: rgba(234,243,236,.92);
+    }
+    .badge b{color: var(--green2)}
+    .badge.orange{border-color: rgba(242,140,40,.35)}
+    .badge.orange b{color: var(--orange2)}
+
+    .hero h1{
+      margin:0;
+      font-size: 42px;
+      line-height:1.08;
+      letter-spacing:-.5px;
+    }
+    .hero h1 .accent{
+      color: var(--green2);
+      text-shadow: 0 0 18px rgba(34,197,94,.18);
+    }
+    .hero h1 .accent2{
+      color: var(--orange2);
+      text-shadow: 0 0 18px rgba(242,140,40,.16);
+    }
     .hero p{
-      max-width:800px;
-      margin:20px auto;
-      color:#ccc;
-      font-size:18px;
+      margin: 14px 0 0;
+      font-size:16px;
+      color: rgba(234,243,236,.86);
+      max-width: 60ch;
     }
-
-    .buttons{
-      margin-top:30px;
+    .hero-cta{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
     }
 
     .btn{
-      display:inline-block;
-      margin:10px;
-      padding:14px 28px;
-      background:#f28c28;
-      color:#000;
-      font-weight:bold;
-      border-radius:4px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 13px 16px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
       text-decoration:none;
+      font-weight:900;
+      color:#0b0f0d;
+      background: var(--white);
+      box-shadow: 0 12px 26px rgba(0,0,0,.18);
+      min-width: 190px;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.primary{
+      background: linear-gradient(135deg, var(--green2), var(--green));
+      border-color: rgba(34,197,94,.35);
+      color:#052010;
+    }
+    .btn.whatsapp{
+      background: linear-gradient(135deg, var(--orange2), var(--orange));
+      border-color: rgba(242,140,40,.45);
+      color:#231302;
     }
 
-    .btn:hover{
-      background:#ffa94d;
+    .hero-right{
+      border-radius: var(--radius);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      box-shadow: var(--shadow2);
+      display:flex;
+      flex-direction:column;
+      min-height: 380px;
     }
-
-    .services{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
+    .hero-photo{
+      position:relative;
+      flex:1;
+      min-height: 240px;
     }
-
-    .service-box{
-      background:#1a1a1a;
-      padding:25px;
-      border:1px solid #222;
-      border-radius:6px;
+    .hero-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      filter: contrast(1.05) saturate(1.05);
     }
-
-    .service-box h3{
-      color:#f28c28;
-      margin-bottom:10px;
+    .hero-photo:after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(11,15,13,.85));
     }
-
-    .contacts{
-      background:#0d0d0d;
-      border-radius:6px;
-      padding:30px;
+    .mini-card{
+      padding:18px 18px 22px;
     }
-
-    .contacts p{
+    .mini-card h3{
+      margin:0 0 8px;
       font-size:18px;
-      margin:10px 0;
+      color:#fff;
     }
+    .mini-card p{
+      margin:0;
+      color: rgba(234,243,236,.78);
+      font-size:14px;
+    }
+    .mini-list{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+    .chip{
+      border-radius:14px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      padding:10px 12px;
+      font-weight:800;
+      font-size:12px;
+      color: rgba(234,243,236,.92);
+    }
+    .chip b{color: var(--green2)}
+    .chip i{color: var(--orange2); font-style:normal}
+
+    /* Sections */
+    section{
+      max-width:1200px;
+      margin:auto;
+      padding: 56px 16px;
+    }
+    .section-title{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size:28px;
+      letter-spacing:-.2px;
+    }
+    .section-title p{
+      margin:0;
+      color: rgba(234,243,236,.78);
+      max-width: 70ch;
+    }
+
+    /* White feature strip (Brookhaven vibe) */
+    .white-strip{
+      background: #ffffff;
+      color: var(--text);
+      border-top: 4px solid var(--green2);
+      border-bottom: 4px solid var(--orange2);
+    }
+    .white-strip .section-title p{color: rgba(15,26,18,.72)}
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+    }
+    @media(max-width:980px){ .grid3{grid-template-columns:1fr} }
+
+    .feature{
+      background: #ffffff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+    }
+    .feature:before{
+      content:"";
+      position:absolute;
+      width:140px;height:140px;
+      right:-60px; top:-60px;
+      background: radial-gradient(circle, rgba(34,197,94,.28), transparent 60%);
+    }
+    .feature h3{
+      margin:6px 0 8px;
+      font-size:18px;
+    }
+    .feature p{
+      margin:0;
+      color: rgba(15,26,18,.72);
+      font-size:14px;
+    }
+    .feature .icon{
+      width:40px;height:40px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      color:#062112;
+      background: linear-gradient(135deg, rgba(34,197,94,.25), rgba(34,197,94,.12));
+      border:1px solid rgba(34,197,94,.25);
+    }
+    .feature.orange .icon{
+      color:#2a1602;
+      background: linear-gradient(135deg, rgba(242,140,40,.25), rgba(242,140,40,.12));
+      border-color: rgba(242,140,40,.25);
+    }
+
+    /* Services */
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+    }
+    @media(max-width:980px){ .cards{grid-template-columns:1fr} }
+
+    .card{
+      border-radius: var(--radius);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      box-shadow: var(--shadow2);
+      transition: transform .15s ease;
+    }
+    .card:hover{transform: translateY(-3px)}
+    .card img{
+      width:100%;
+      height:180px;
+      object-fit:cover;
+      display:block;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .card-body{
+      padding:16px 16px 18px;
+    }
+    .card-body h3{
+      margin:0 0 8px;
+      font-size:18px;
+      color:#fff;
+    }
+    .card-body p{
+      margin:0;
+      font-size:14px;
+      color: rgba(234,243,236,.80);
+    }
+    .card-body .tagrow{
+      margin-top:12px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .tag{
+      font-size:12px;
+      font-weight:900;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(34,197,94,.12);
+      border:1px solid rgba(34,197,94,.22);
+      color: rgba(234,243,236,.90);
+    }
+    .tag.orange{
+      background: rgba(242,140,40,.12);
+      border-color: rgba(242,140,40,.25);
+    }
+
+    /* Service list */
+    .service-list{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:10px;
+    }
+    @media(max-width:980px){ .service-list{grid-template-columns:1fr 1fr} }
+    .svc{
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding:12px 12px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .svc b{display:block; font-size:13px}
+    .svc span{display:block; font-size:12px; color: rgba(234,243,236,.78)}
+    .dot{
+      width:12px;height:12px;border-radius:999px;
+      margin-top:4px;
+      background: linear-gradient(135deg, var(--green2), var(--green));
+      box-shadow: 0 0 0 4px rgba(34,197,94,.10);
+      flex: 0 0 12px;
+    }
+    .dot.orange{
+      background: linear-gradient(135deg, var(--orange2), var(--orange));
+      box-shadow: 0 0 0 4px rgba(242,140,40,.10);
+    }
+
+    /* Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:14px;
+    }
+    @media(max-width:980px){ .gallery{grid-template-columns:1fr} }
+    .gitem{
+      border-radius: var(--radius);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      box-shadow: var(--shadow2);
+      position:relative;
+      min-height:220px;
+    }
+    .gitem img{width:100%;height:100%;object-fit:cover;display:block}
+    .gitem .label{
+      position:absolute; left:14px; bottom:14px;
+      background: rgba(11,15,13,.78);
+      border:1px solid rgba(255,255,255,.12);
+      padding:10px 12px;
+      border-radius: 14px;
+      font-weight:900;
+      font-size:12px;
+      color:#fff;
+      max-width: 85%;
+    }
+
+    /* Contact */
+    .contact-wrap{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+      align-items:start;
+    }
+    @media(max-width:980px){ .contact-wrap{grid-template-columns:1fr} }
+
+    .contact-card{
+      border-radius: var(--radius);
+      background:#ffffff;
+      color: var(--text);
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow: var(--shadow);
+      padding:22px;
+    }
+    .contact-card h3{margin:0 0 10px}
+    .contact-card p{margin:0 0 10px; color: rgba(15,26,18,.72)}
+    .contact-lines{
+      margin-top:14px;
+      display:grid;
+      gap:10px;
+    }
+    .cline{
+      border:1px solid rgba(0,0,0,.08);
+      border-radius: 14px;
+      padding:12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      background: #fff;
+    }
+    .cline b{font-size:13px}
+    .cline a{
+      text-decoration:none;
+      font-weight:900;
+      color: #0b0f0d;
+      background: linear-gradient(135deg, rgba(34,197,94,.20), rgba(34,197,94,.10));
+      border:1px solid rgba(34,197,94,.20);
+      padding:8px 10px;
+      border-radius: 12px;
+      white-space:nowrap;
+    }
+    .cline a.orange{
+      background: linear-gradient(135deg, rgba(242,140,40,.20), rgba(242,140,40,.10));
+      border-color: rgba(242,140,40,.22);
+    }
+
+    .promise{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      padding:18px;
+    }
+    .promise h3{margin:0 0 8px; color:#fff}
+    .promise ul{margin:10px 0 0; padding-left:18px; color: rgba(234,243,236,.82)}
+    .promise li{margin:6px 0}
 
     footer{
-      background:#000;
       text-align:center;
-      padding:20px;
-      color:#777;
-      font-size:14px;
-      border-top:1px solid #222;
+      padding: 26px 16px;
+      color: rgba(234,243,236,.62);
+      border-top:1px solid rgba(255,255,255,.06);
+      background: rgba(0,0,0,.25);
     }
+
+    /* Small helper */
+    .divider{height:1px;background:rgba(255,255,255,.08);margin:18px 0}
   </style>
 </head>
 
 <body>
 
-<header>
-  <img src="Dreams.png" alt="Dreams Buildings LLC Logo">
-  <h1>Dreams Buildings LLC</h1>
-  <p>Construction, Remodeling & Affordable Repairs</p>
-</header>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <img src="Dreams.png" alt="Dreams Buildings LLC Logo">
+        <div class="name">
+          <b>Dreams Buildings LLC</b>
+          <span data-i18n="taglineTop">Construction • Remodeling • Repairs</span>
+        </div>
+      </div>
 
-<nav>
-  <a href="#home">Home</a>
-  <a href="#services">Services</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-</nav>
+      <div class="nav">
+        <a href="#home" data-i18n="navHome">Home</a>
+        <a href="#services" data-i18n="navServices">Services</a>
+        <a href="#gallery" data-i18n="navWork">Work</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+      </div>
 
-<section id="home" class="hero">
-  <h2>Serving Pittsburgh & Surrounding Areas</h2>
-  <p>
-    Professional construction and renovation solutions designed for homeowners,
-    property managers, and real estate investors. From small repairs to full remodels —
-    reliable, efficient, and done right.
-  </p>
-
-  <div class="buttons">
-    <a class="btn" href="tel:+14123035634">Call Now</a>
-    <a class="btn" href="https://wa.me/14123035634" target="_blank">WhatsApp</a>
-  </div>
-</section>
-
-<section id="services">
-  <h2>Our Services</h2>
-
-  <div class="services">
-    <div class="service-box">
-      <h3>Turnover Services</h3>
-      <p>
-        Reliable turnover services to ensure your rental property is fully functional,
-        clean, and ready for new tenants on time.
-      </p>
-    </div>
-
-    <div class="service-box">
-      <h3>Property Repairs</h3>
-      <p>
-        Comprehensive residential and commercial repairs —
-        drywall, flooring, painting, electrical, carpentry and more.
-      </p>
-    </div>
-
-    <div class="service-box">
-      <h3>Custom Renovations</h3>
-      <p>
-        Tailored renovation solutions designed to modernize,
-        improve value, and maximize functionality.
-      </p>
-    </div>
-
-    <div class="service-box">
-      <h3>Maintenance Plans</h3>
-      <p>
-        Scheduled maintenance services to keep your property
-        in top condition year-round.
-      </p>
+      <div class="actions">
+        <button class="pill green" id="langBtn" title="Language">
+          🌐 <span id="langLabel">ES</span>
+        </button>
+        <a class="pill orange" href="tel:+14013285587">📞 <span data-i18n="callNowPill">Call</span></a>
+        <a class="pill green" href="https://wa.me/14015567017" target="_blank">💬 WhatsApp</a>
+      </div>
     </div>
   </div>
-</section>
 
-<section id="about">
-  <h2>Why Choose Us</h2>
-  <p>
-    Dreams Buildings LLC is committed to quality craftsmanship,
-    honest communication, and dependable service.
-    We understand the needs of property owners and investors
-    and work efficiently to protect your investment.
-  </p>
-</section>
+  <!-- HERO -->
+  <div class="hero" id="home">
+    <div class="hero-left">
+      <div class="badge-row">
+        <div class="badge"><b>✓</b> <span data-i18n="badge1">Residential & Commercial</span></div>
+        <div class="badge orange"><b>⚡</b> <span data-i18n="badge2">Fast Response</span></div>
+        <div class="badge"><b>🛠</b> <span data-i18n="badge3">Repairs • Remodels • Turnovers</span></div>
+      </div>
 
-<section id="contact">
-  <h2>Contact Us</h2>
+      <h1>
+        <span data-i18n="heroTitle1">Pittsburgh’s</span>
+        <span class="accent" data-i18n="heroTitle2">Reliable</span>
+        <span data-i18n="heroTitle3">Construction &</span>
+        <span class="accent2" data-i18n="heroTitle4">Repair</span>
+        <span data-i18n="heroTitle5">Team</span>
+      </h1>
 
-  <div class="contacts">
-    <p><strong>Phone 1:</strong> +1 (412) 303-5634</p>
-    <p><strong>Phone 2:</strong> +1 (401) 556-7017</p>
-    <p><strong>Phone 3:</strong> +1 (401) 328-5587</p>
-    <p><strong>WhatsApp:</strong> Available</p>
+      <p data-i18n="heroDesc">
+        We handle everything from drywall, painting, plumbing, and electrical to full renovations and rental turnovers.
+        If you want it done right — and done on time — Dreams Buildings LLC is the call.
+      </p>
+
+      <div class="hero-cta">
+        <a class="btn primary" href="#contact" data-i18n="heroBtn1">Get a Quote</a>
+        <a class="btn whatsapp" href="https://wa.me/14015567017" target="_blank" data-i18n="heroBtn2">Message on WhatsApp</a>
+      </div>
+
+      <div class="divider"></div>
+
+      <p style="margin:0;color:rgba(234,243,236,.78);font-weight:700" data-i18n="trustLine">
+        Dependable. Detail-driven. Built to last. Hiring us will be one of your best decisions.
+      </p>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-photo">
+        <img alt="Construction team at work"
+          src="https://images.unsplash.com/photo-1581578017426-23e1f2b3e6d2?auto=format&fit=crop&w=1200&q=80">
+      </div>
+      <div class="mini-card">
+        <h3 data-i18n="miniTitle">What we specialize in</h3>
+        <p data-i18n="miniDesc">From quick fixes to beautiful remodels — residential homes and commercial spaces.</p>
+        <div class="mini-list">
+          <div class="chip"><b>⚡</b> <span data-i18n="chip1">Electrical</span></div>
+          <div class="chip"><i>🧱</i> <span data-i18n="chip2">Drywall</span></div>
+          <div class="chip"><b>🎨</b> <span data-i18n="chip3">Painting</span></div>
+          <div class="chip"><i>🚰</i> <span data-i18n="chip4">Plumbing</span></div>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
 
-<footer>
-  © 2025 Dreams Buildings LLC · All Rights Reserved
-</footer>
+  <!-- WHITE STRIP (Brookhaven vibe) -->
+  <section class="white-strip">
+    <div class="section-title">
+      <div>
+        <h2 data-i18n="valueTitle">Professional service you can trust</h2>
+        <p data-i18n="valueDesc">
+          Clear communication, strong workmanship, and results that look clean and modern.
+          We’re built for property managers, homeowners, and investors.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid3">
+      <div class="feature">
+        <div class="icon">✓</div>
+        <h3 data-i18n="v1Title">Reliable & “Infallible” mindset</h3>
+        <p data-i18n="v1Desc">
+          We show up, we communicate, and we finish strong — so you don’t have to chase contractors.
+        </p>
+      </div>
+
+      <div class="feature orange">
+        <div class="icon">⚡</div>
+        <h3 data-i18n="v2Title">Fast turnaround</h3>
+        <p data-i18n="v2Desc">
+          Turnovers and repairs done efficiently to keep your property moving and profitable.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="icon">🛠</div>
+        <h3 data-i18n="v3Title">Beautiful remodels</h3>
+        <p data-i18n="v3Desc">
+          Clean lines, smooth finishes, and upgrades that boost comfort and property value.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-title">
+      <div>
+        <h2 data-i18n="servicesTitle">Services</h2>
+        <p data-i18n="servicesDesc">
+          Residential & Commercial work. Small jobs welcome — and bigger projects too.
+          If you need a dependable crew, we’re ready.
+        </p>
+      </div>
+    </div>
+
+    <div class="cards">
+      <a class="card" href="#contact" style="text-decoration:none">
+        <img alt="Rental turnover services"
+          src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1200&q=80">
+        <div class="card-body">
+          <h3 data-i18n="c1Title">Turnover Services</h3>
+          <p data-i18n="c1Desc">Make-ready services so your rental is clean, functional, and tenant-ready — on time.</p>
+          <div class="tagrow">
+            <span class="tag" data-i18n="tagFast">Fast</span>
+            <span class="tag orange" data-i18n="tagReady">Deposit-ready</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="card" href="#contact" style="text-decoration:none">
+        <img alt="Home remodeling"
+          src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80">
+        <div class="card-body">
+          <h3 data-i18n="c2Title">Renovations & Remodeling</h3>
+          <p data-i18n="c2Desc">Kitchens, bathrooms, basements, upgrades and modern finishes — done clean and right.</p>
+          <div class="tagrow">
+            <span class="tag" data-i18n="tagDesign">Modern</span>
+            <span class="tag orange" data-i18n="tagValue">Value</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="card" href="#contact" style="text-decoration:none">
+        <img alt="Professional repairs"
+          src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80">
+        <div class="card-body">
+          <h3 data-i18n="c3Title">Repairs (Residential & Commercial)</h3>
+          <p data-i18n="c3Desc">Drywall, painting, flooring, doors, trim, plumbing, electrical, and more.</p>
+          <div class="tagrow">
+            <span class="tag" data-i18n="tagReliable">Reliable</span>
+            <span class="tag orange" data-i18n="tagClean">Clean work</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div style="margin-top:20px">
+      <h3 style="margin:0 0 10px;color:#fff" data-i18n="allServicesTitle">More services we do</h3>
+      <p style="margin:0 0 14px;color:rgba(234,243,236,.78)" data-i18n="allServicesDesc">
+        If it’s part of the building, we can repair it, replace it, or upgrade it.
+      </p>
+
+      <div class="service-list">
+        <div class="svc"><div class="dot"></div><div><b data-i18n="s1b">Electrical</b><span data-i18n="s1s">outlets, lights, switches, troubleshooting</span></div></div>
+        <div class="svc"><div class="dot orange"></div><div><b data-i18n="s2b">Plumbing</b><span data-i18n="s2s">fixtures, leaks, replacements, repairs</span></div></div>
+        <div class="svc"><div class="dot"></div><div><b data-i18n="s3b">Drywall</b><span data-i18n="s3s">install, patch, tape, mud, smooth finish</span></div></div>
+        <div class="svc"><div class="dot orange"></div><div><b data-i18n="s4b">Painting</b><span data-i18n="s4s">interior & exterior, clean edges, prep work</span></div></div>
+
+        <div class="svc"><div class="dot"></div><div><b data-i18n="s5b">Carpentry & Framing</b><span data-i18n="s5s">doors, trim, repairs, framing</span></div></div>
+        <div class="svc"><div class="dot orange"></div><div><b data-i18n="s6b">Flooring</b><span data-i18n="s6s">LVP, tile, baseboards, subfloor fixes</span></div></div>
+        <div class="svc"><div class="dot"></div><div><b data-i18n="s7b">Siding & Exterior</b><span data-i18n="s7s">repairs, upgrades, weather protection</span></div></div>
+        <div class="svc"><div class="dot orange"></div><div><b data-i18n="s8b">Maintenance Plans</b><span data-i18n="s8s">scheduled upkeep for rentals & buildings</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="section-title">
+      <div>
+        <h2 data-i18n="galleryTitle">Work Style</h2>
+        <p data-i18n="galleryDesc">
+          Clean finishes, strong structure, and details that look professional — because your property represents you.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery">
+      <div class="gitem">
+        <img alt="Drywall finishing" src="https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&w=1400&q=80">
+        <div class="label" data-i18n="g1">Drywall • smooth walls • clean finish</div>
+      </div>
+      <div class="gitem">
+        <img alt="Painting work" src="https://images.unsplash.com/photo-1595854341625-f33ee10d6c2b?auto=format&fit=crop&w=1400&q=80">
+        <div class="label" data-i18n="g2">Painting • prep • crisp lines</div>
+      </div>
+      <div class="gitem">
+        <img alt="Remodeling" src="https://images.unsplash.com/photo-1582582429416-1ad3fd9d4f5a?auto=format&fit=crop&w=1400&q=80">
+        <div class="label" data-i18n="g3">Remodels • upgrades • modern look</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-title">
+      <div>
+        <h2 data-i18n="contactTitle">Contact</h2>
+        <p data-i18n="contactDesc">
+          Tell us what you need. We’ll respond quickly and help you get it handled.
+        </p>
+      </div>
+    </div>
+
+    <div class="contact-wrap">
+      <div class="contact-card">
+        <h3 data-i18n="contactCardTitle">Direct lines</h3>
+        <p data-i18n="contactCardDesc">
+          Call, text, or message us. We work with homeowners, property managers, and commercial clients.
+        </p>
+
+        <div class="contact-lines">
+          <div class="cline">
+            <div>
+              <b data-i18n="mainLine">Main phone</b><br/>
+              <span style="color:rgba(15,26,18,.70);font-weight:700">+1 (401) 328-5587</span>
+            </div>
+            <a href="tel:+14013285587" data-i18n="callBtn">Call</a>
+          </div>
+
+          <div class="cline">
+            <div>
+              <b data-i18n="secondLine">Second phone</b><br/>
+              <span style="color:rgba(15,26,18,.70);font-weight:700">+1 (412) 303-5634</span>
+            </div>
+            <a href="tel:+14123035634" data-i18n="callBtn">Call</a>
+          </div>
+
+          <div class="cline">
+            <div>
+              <b>WhatsApp</b><br/>
+              <span style="color:rgba(15,26,18,.70);font-weight:700">+1 (401) 556-7017</span>
+            </div>
+            <a class="orange" href="https://wa.me/14015567017" target="_blank" data-i18n="msgBtn">Message</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="promise">
+        <h3 data-i18n="promiseTitle">Why hiring us is the best decision</h3>
+        <p style="margin:0;color:rgba(234,243,236,.82)" data-i18n="promiseDesc">
+          We treat your property like an investment. We’re dependable, detail-focused, and built to deliver results that last.
+        </p>
+        <ul>
+          <li data-i18n="p1">Clear communication & honest timelines</li>
+          <li data-i18n="p2">Professional finishes — not “quick and sloppy”</li>
+          <li data-i18n="p3">Residential & commercial-ready services</li>
+          <li data-i18n="p4">Turnovers, maintenance plans, and remodels</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div style="font-weight:900;color:#fff">Dreams Buildings LLC</div>
+    <div data-i18n="footerLine">Serving Pittsburgh & surrounding areas • Residential & Commercial</div>
+    <div style="margin-top:6px">© 2025</div>
+  </footer>
+
+  <script>
+    const i18n = {
+      en: {
+        taglineTop: "Construction • Remodeling • Repairs",
+        navHome: "Home",
+        navServices: "Services",
+        navWork: "Work",
+        navContact: "Contact",
+        callNowPill: "Call",
+
+        badge1: "Residential & Commercial",
+        badge2: "Fast Response",
+        badge3: "Repairs • Remodels • Turnovers",
+
+        heroTitle1: "Pittsburgh’s",
+        heroTitle2: "Reliable",
+        heroTitle3: "Construction &",
+        heroTitle4: "Repair",
+        heroTitle5: "Team",
+
+        heroDesc:
+          "We handle everything from drywall, painting, plumbing, and electrical to full renovations and rental turnovers. If you want it done right — and done on time — Dreams Buildings LLC is the call.",
+
+        heroBtn1: "Get a Quote",
+        heroBtn2: "Message on WhatsApp",
+
+        trustLine:
+          "Dependable. Detail-driven. Built to last. Hiring us will be one of your best decisions.",
+
+        miniTitle: "What we specialize in",
+        miniDesc: "From quick fixes to beautiful remodels — residential homes and commercial spaces.",
+        chip1: "Electrical",
+        chip2: "Drywall",
+        chip3: "Painting",
+        chip4: "Plumbing",
+
+        valueTitle: "Professional service you can trust",
+        valueDesc:
+          "Clear communication, strong workmanship, and results that look clean and modern. We’re built for property managers, homeowners, and investors.",
+
+        v1Title: "Reliable & “Infallible” mindset",
+        v1Desc: "We show up, we communicate, and we finish strong — so you don’t have to chase contractors.",
+        v2Title: "Fast turnaround",
+        v2Desc: "Turnovers and repairs done efficiently to keep your property moving and profitable.",
+        v3Title: "Beautiful remodels",
+        v3Desc: "Clean lines, smooth finishes, and upgrades that boost comfort and property value.",
+
+        servicesTitle: "Services",
+        servicesDesc:
+          "Residential & Commercial work. Small jobs welcome — and bigger projects too. If you need a dependable crew, we’re ready.",
+
+        c1Title: "Turnover Services",
+        c1Desc: "Make-ready services so your rental is clean, functional, and tenant-ready — on time.",
+        c2Title: "Renovations & Remodeling",
+        c2Desc: "Kitchens, bathrooms, basements, upgrades and modern finishes — done clean and right.",
+        c3Title: "Repairs (Residential & Commercial)",
+        c3Desc: "Drywall, painting, flooring, doors, trim, plumbing, electrical, and more.",
+
+        tagFast: "Fast",
+        tagReady: "Tenant-ready",
+        tagDesign: "Modern",
+        tagValue: "Value",
+        tagReliable: "Reliable",
+        tagClean: "Clean work",
+
+        allServicesTitle: "More services we do",
+        allServicesDesc: "If it’s part of the building, we can repair it, replace it, or upgrade it.",
+
+        s1b: "Electrical",
+        s1s: "outlets, lights, switches, troubleshooting",
+        s2b: "Plumbing",
+        s2s: "fixtures, leaks, replacements, repairs",
+        s3b: "Drywall",
+        s3s: "install, patch, tape, mud, smooth finish",
+        s4b: "Painting",
+        s4s: "interior & exterior, clean edges, prep work",
+        s5b: "Carpentry & Framing",
+        s5s: "doors, trim, repairs, framing",
+        s6b: "Flooring",
+        s6s: "LVP, tile, baseboards, subfloor fixes",
+        s7b: "Siding & Exterior",
+        s7s: "repairs, upgrades, weather protection",
+        s8b: "Maintenance Plans",
+        s8s: "scheduled upkeep for rentals & buildings",
+
+        galleryTitle: "Work Style",
+        galleryDesc:
+          "Clean finishes, strong structure, and details that look professional — because your property represents you.",
+        g1: "Drywall • smooth walls • clean finish",
+        g2: "Painting • prep • crisp lines",
+        g3: "Remodels • upgrades • modern look",
+
+        contactTitle: "Contact",
+        contactDesc: "Tell us what you need. We’ll respond quickly and help you get it handled.",
+        contactCardTitle: "Direct lines",
+        contactCardDesc:
+          "Call, text, or message us. We work with homeowners, property managers, and commercial clients.",
+        mainLine: "Main phone",
+        secondLine: "Second phone",
+        callBtn: "Call",
+        msgBtn: "Message",
+
+        promiseTitle: "Why hiring us is the best decision",
+        promiseDesc:
+          "We treat your property like an investment. We’re dependable, detail-focused, and built to deliver results that last.",
+        p1: "Clear communication & honest timelines",
+        p2: "Professional finishes — not “quick and sloppy”",
+        p3: "Residential & commercial-ready services",
+        p4: "Turnovers, maintenance plans, and remodels",
+
+        footerLine: "Serving Pittsburgh & surrounding areas • Residential & Commercial"
+      },
+
+      es: {
+        taglineTop: "Construcción • Remodelación • Reparaciones",
+        navHome: "Inicio",
+        navServices: "Servicios",
+        navWork: "Trabajos",
+        navContact: "Contacto",
+        callNowPill: "Llamar",
+
+        badge1: "Residencial y Comercial",
+        badge2: "Respuesta Rápida",
+        badge3: "Reparaciones • Remodelaciones • Turnovers",
+
+        heroTitle1: "El equipo",
+        heroTitle2: "más confiable",
+        heroTitle3: "para",
+        heroTitle4: "Reparaciones",
+        heroTitle5: "y Remodelación",
+
+        heroDesc:
+          "Hacemos de todo: drywall, pintura, plomería, electricidad, remodelaciones completas y turnover de rentas. Si lo quieres bien hecho — y a tiempo — Dreams Buildings LLC es la mejor decisión.",
+
+        heroBtn1: "Pedir Cotización",
+        heroBtn2: "Escribir por WhatsApp",
+
+        trustLine:
+          "Confiables. Detallistas. Trabajo que dura. Contratarnos será una de tus mejores decisiones.",
+
+        miniTitle: "En lo que somos fuertes",
+        miniDesc: "Desde arreglos rápidos hasta remodelaciones bellísimas — residencial y comercial.",
+        chip1: "Electricidad",
+        chip2: "Drywall",
+        chip3: "Pintura",
+        chip4: "Plomería",
+
+        valueTitle: "Servicio profesional que da confianza",
+        valueDesc:
+          "Comunicación clara, buena mano de obra y resultados limpios y modernos. Perfecto para dueños, inversionistas y property managers.",
+
+        v1Title: "Confiables (mentalidad infalible)",
+        v1Desc: "Llegamos, respondemos y terminamos fuerte — sin que tengas que estar persiguiendo contratistas.",
+        v2Title: "Rápidos y eficientes",
+        v2Desc: "Turnovers y reparaciones a tiempo para que tu propiedad siga produciendo.",
+        v3Title: "Remodelaciones bellísimas",
+        v3Desc: "Acabados limpios, líneas modernas y mejoras que suben el valor de la propiedad.",
+
+        servicesTitle: "Servicios",
+        servicesDesc:
+          "Trabajo residencial y comercial. Aceptamos trabajos pequeños y proyectos grandes. Si necesitas un equipo serio, aquí estamos.",
+
+        c1Title: "Turnover / Make-Ready",
+        c1Desc: "Dejamos tu renta lista: limpia, funcional y preparada para el siguiente inquilino.",
+        c2Title: "Remodelaciones",
+        c2Desc: "Cocinas, baños, sótanos, upgrades y acabados modernos — limpio y bien hecho.",
+        c3Title: "Reparaciones (Residencial y Comercial)",
+        c3Desc: "Drywall, pintura, piso, puertas, trim, plomería, electricidad y más.",
+
+        tagFast: "Rápido",
+        tagReady: "Lista para renta",
+        tagDesign: "Moderno",
+        tagValue: "Más valor",
+        tagReliable: "Confiable",
+        tagClean: "Trabajo limpio",
+
+        allServicesTitle: "Más cosas que hacemos",
+        allServicesDesc: "Si es parte de la propiedad, lo reparamos, lo reemplazamos o lo mejoramos.",
+
+        s1b: "Electricidad",
+        s1s: "tomas, luces, switches, diagnóstico",
+        s2b: "Plomería",
+        s2s: "grifos, fugas, reemplazos, reparaciones",
+        s3b: "Drywall",
+        s3s: "instalación, parches, tape, mud, acabado fino",
+        s4b: "Pintura",
+        s4s: "interior y exterior, preparación, líneas limpias",
+        s5b: "Carpintería y Framing",
+        s5s: "puertas, trim, reparaciones, estructura",
+        s6b: "Pisos",
+        s6s: "LVP, cerámica, zócalos, subfloor",
+        s7b: "Siding y Exterior",
+        s7s: "reparaciones, mejoras, protección clima",
+        s8b: "Planes de Mantenimiento",
+        s8s: "mantenimiento programado para edificios y rentas",
+
+        galleryTitle: "Estilo de trabajo",
+        galleryDesc:
+          "Acabados limpios, estructura fuerte y detalles profesionales — porque tu propiedad te representa.",
+        g1: "Drywall • paredes lisas • acabado limpio",
+        g2: "Pintura • preparación • líneas finas",
+        g3: "Remodelación • upgrades • look moderno",
+
+        contactTitle: "Contacto",
+        contactDesc: "Dinos lo que necesitas. Respondemos rápido y lo resolvemos.",
+        contactCardTitle: "Líneas directas",
+        contactCardDesc:
+          "Llama, escribe o mándanos WhatsApp. Trabajamos residencial, comercial y con property managers.",
+        mainLine: "Número principal",
+        secondLine: "Segundo número",
+        callBtn: "Llamar",
+        msgBtn: "Escribir",
+
+        promiseTitle: "Por qué contratarnos es la mejor decisión",
+        promiseDesc:
+          "Tratamos tu propiedad como inversión. Somos confiables, detallistas y entregamos resultados que duran.",
+        p1: "Comunicación clara y tiempos reales",
+        p2: "Acabados profesionales — nada de trabajo “apresurado”",
+        p3: "Listos para residencial y comercial",
+        p4: "Turnovers, mantenimiento y remodelaciones",
+
+        footerLine: "Pittsburgh y alrededores • Residencial y Comercial"
+      }
+    };
+
+    let current = "en"; // default English (GitHub Pages)
+    const langBtn = document.getElementById("langBtn");
+    const langLabel = document.getElementById("langLabel");
+
+    function applyLang(lang){
+      current = lang;
+      const dict = i18n[lang] || i18n.en;
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if(dict[key]) el.textContent = dict[key];
+      });
+      langLabel.textContent = (lang === "en") ? "ES" : "EN";
+      document.documentElement.lang = lang;
+    }
+
+    langBtn.addEventListener("click", ()=>{
+      applyLang(current === "en" ? "es" : "en");
+    });
+
+    // Start in English; user can toggle to Spanish
+    applyLang("en");
+  </script>
 
 </body>
 </html>
