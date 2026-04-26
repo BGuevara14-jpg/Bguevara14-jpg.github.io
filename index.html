@@ -1,0 +1,860 @@
+Sí. Vamos a rehacerla con un enfoque más claro:
+
+Dreams Building LLC = Property Maintenance + Handyman + Repairs + Remodeling + Turnovers
+
+Y sin galería, sin textos de plantilla, sin instrucciones visibles.
+
+Antes de darte el código completo, necesito que uses este nombre para el logo en GitHub:
+
+logo.jpg
+
+Si tu logo está como PNG, entonces usa:
+
+logo.png
+
+y yo ajusto la línea.
+
+Voy a prepararte una versión nueva completa con:
+
+Enfoque principal: property maintenance para dueños, inversionistas y property managers.
+Servicios incluidos: handyman, reparaciones, instalaciones, emergency calls, remodeling, turnovers, limpieza, smoke detectors, inspection punch list, Section 8 / housing ready repairs.
+Diseño: limpio, más pro, sin fotos falsas, con colores navy/gold/blanco del logo.
+
+Pégalo completo reemplazando todo tu index.html:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dreams Building LLC | Property Maintenance, Handyman & Remodeling</title>
+  <meta name="description" content="Dreams Building LLC provides property maintenance, handyman services, repairs, emergency calls, turnovers, cleaning, and remodeling for homeowners, investors, and property managers in Pittsburgh and surrounding areas." />
+  <style>
+    :root {
+      --navy: #0b2545;
+      --navy-dark: #061626;
+      --navy-soft: #12345f;
+      --gold: #d7a62f;
+      --gold-light: #f2c85b;
+      --white: #ffffff;
+      --soft: #f6f7f9;
+      --text: #172033;
+      --muted: #667085;
+      --line: #e6e8ee;
+      --danger: #c53242;
+      --radius: 24px;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.10);
+      --max: 1180px;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+    .topbar {
+      background: var(--navy-dark);
+      color: white;
+      font-size: 14px;
+    }
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 10px 0;
+    }
+    .topbar strong {
+      color: var(--gold-light);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+      padding: 15px 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand img {
+      width: 74px;
+      height: 74px;
+      object-fit: contain;
+      background: white;
+      border-radius: 18px;
+      padding: 6px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .brand h1 {
+      font-size: 1.15rem;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+    .brand p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      border: 2px solid transparent;
+      text-align: center;
+      transition: 0.25s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #111;
+      box-shadow: 0 12px 28px rgba(215,166,47,0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+    .btn-dark {
+      background: var(--navy);
+      color: white;
+    }
+    .btn-dark:hover {
+      background: var(--navy-dark);
+    }
+    .btn-outline {
+      background: white;
+      color: var(--navy);
+      border-color: var(--navy);
+    }
+    .btn-outline:hover {
+      background: var(--navy);
+      color: white;
+    }
+    .mobile-toggle {
+      display: none;
+      border: 0;
+      background: transparent;
+      font-size: 2rem;
+      color: var(--navy);
+      font-weight: 900;
+    }
+    .hero {
+      background:
+        radial-gradient(circle at top left, rgba(215,166,47,0.18), transparent 34%),
+        linear-gradient(135deg, #ffffff 0%, #f7f8fa 100%);
+      padding: 78px 0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 38px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      background: rgba(11,37,69,0.08);
+      color: var(--navy);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+    .hero h2 {
+      font-size: clamp(2.45rem, 5vw, 4.8rem);
+      line-height: 1.03;
+      color: var(--navy);
+      margin-bottom: 18px;
+      max-width: 13ch;
+    }
+    .hero h2 span {
+      color: var(--gold);
+    }
+    .hero p {
+      color: #425166;
+      font-size: 1.1rem;
+      max-width: 64ch;
+      margin-bottom: 28px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .trust-pill {
+      background: white;
+      border: 1px solid var(--line);
+      color: var(--navy);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.04);
+    }
+    .hero-card {
+      background: linear-gradient(180deg, var(--navy), var(--navy-dark));
+      color: white;
+      padding: 32px;
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      right: -90px;
+      bottom: -90px;
+      background: radial-gradient(circle, rgba(215,166,47,0.32), transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-card .label {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--danger), #ed5362);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+    .hero-card h3 {
+      font-size: 1.75rem;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .hero-card ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      color: #e6edf7;
+      margin: 20px 0 24px;
+    }
+    .phone-box {
+      position: relative;
+      z-index: 2;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 20px;
+      padding: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .phone-box small {
+      opacity: 0.8;
+    }
+    .phone-box .number {
+      color: var(--gold-light);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      font-weight: 900;
+    }
+    section {
+      padding: 78px 0;
+    }
+    .section-heading {
+      max-width: 800px;
+      margin-bottom: 34px;
+    }
+    .tag {
+      color: var(--danger);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .section-heading h3 {
+      color: var(--navy);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.08;
+      margin-bottom: 14px;
+    }
+    .section-heading p {
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+    .services {
+      background: var(--soft);
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .service-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    }
+    .service-card .icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 1.55rem;
+      background: linear-gradient(135deg, rgba(215,166,47,0.18), rgba(11,37,69,0.08));
+      margin-bottom: 16px;
+    }
+    .service-card h4 {
+      color: var(--navy);
+      font-size: 1.22rem;
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .service-card ul {
+      list-style: none;
+      display: grid;
+      gap: 7px;
+      color: #394150;
+      font-weight: 700;
+    }
+    .property-focus {
+      background: white;
+    }
+    .focus-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .focus-panel {
+      border-radius: 30px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+    .focus-panel.dark {
+      background: linear-gradient(180deg, var(--navy), var(--navy-dark));
+      color: white;
+    }
+    .focus-panel.light {
+      background: linear-gradient(180deg, #fff9eb, #ffffff);
+      border: 1px solid #f1e4bf;
+    }
+    .focus-panel h4 {
+      font-size: 1.6rem;
+      margin-bottom: 14px;
+    }
+    .focus-panel p {
+      margin-bottom: 18px;
+      color: inherit;
+      opacity: 0.95;
+    }
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+    .check-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .express {
+      background: var(--soft);
+    }
+    .express-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .express-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    }
+    .express-card h4 {
+      color: var(--navy);
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+    }
+    .express-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .simple-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      font-weight: 700;
+      color: #394150;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .process-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+    }
+    .process-card strong {
+      display: block;
+      color: var(--gold);
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+    .process-card h4 {
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .process-card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+    .cta-section {
+      padding: 70px 0;
+    }
+    .cta {
+      background: linear-gradient(135deg, var(--navy), var(--navy-dark));
+      color: white;
+      border-radius: 34px;
+      padding: 42px;
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+    }
+    .cta h3 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1.08;
+      margin-bottom: 10px;
+    }
+    .cta p {
+      color: #dce5f5;
+      max-width: 62ch;
+    }
+    .contact {
+      background: var(--soft);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .contact-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 30px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.04);
+    }
+    .contact-card h4 {
+      color: var(--navy);
+      font-size: 1.45rem;
+      margin-bottom: 10px;
+    }
+    .contact-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .contact-line {
+      display: block;
+      color: var(--navy);
+      font-size: 1.1rem;
+      font-weight: 900;
+      margin-bottom: 18px;
+      word-break: break-word;
+    }
+    footer {
+      background: #07111f;
+      color: #dce4f0;
+      padding: 30px 0;
+    }
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-weight: 800;
+    }
+    @media (max-width: 980px) {
+      .hero-grid,
+      .service-grid,
+      .focus-grid,
+      .express-wrap,
+      .process-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links,
+      .nav-actions {
+        display: none;
+      }
+      .mobile-toggle {
+        display: block;
+      }
+      .nav.open {
+        flex-wrap: wrap;
+      }
+      .nav.open .nav-links,
+      .nav.open .nav-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+      }
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    @media (max-width: 640px) {
+      .topbar {
+        display: none;
+      }
+      .brand img {
+        width: 64px;
+        height: 64px;
+      }
+      .brand h1 {
+        font-size: 1.05rem;
+      }
+      .brand p {
+        font-size: 0.88rem;
+      }
+      .hero {
+        padding: 52px 0;
+      }
+      .hero h2 {
+        font-size: 2.35rem;
+      }
+      section {
+        padding: 58px 0;
+      }
+      .hero-card,
+      .cta,
+      .focus-panel {
+        padding: 26px;
+        border-radius: 26px;
+      }
+      .btn {
+        width: 100%;
+      }
+      .hero-actions {
+        width: 100%;
+      }
+      .phone-box {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div><strong>Property Maintenance • Handyman • Repairs • Remodeling</strong></div>
+      <div><strong>Call/Text:</strong> 412-219-6512</div>
+    </div>
+  </div>
+  <header>
+    <div class="container">
+      <nav class="nav" id="nav">
+        <a href="#home" class="brand">
+          <img src="logo.jpg" alt="Dreams Building LLC Logo" />
+          <div>
+            <h1>Dreams Building LLC</h1>
+            <p>Property Maintenance • Handyman • Remodeling</p>
+          </div>
+        </a>
+        <button class="mobile-toggle" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#property">Property Managers</a>
+          <a href="#express">Express Repairs</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-actions">
+          <a class="btn btn-outline" href="mailto:dreamsbuildingsllc@gmail.com">Email Us</a>
+          <a class="btn btn-primary" href="tel:4122196512">Call Now</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Serving Pittsburgh & Surrounding Areas</div>
+          <h2>Property maintenance, repairs, and remodeling <span>you can count on</span></h2>
+          <p>
+            Dreams Building LLC helps homeowners, landlords, investors, and property management companies
+            with reliable maintenance, handyman services, emergency repairs, turnovers, cleaning, and remodeling.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:4122196512">Call 412-219-6512</a>
+            <a class="btn btn-dark" href="mailto:dreamsbuildingsllc@gmail.com">Request Service</a>
+          </div>
+          <div class="trust-row">
+            <span class="trust-pill">Fast Response</span>
+            <span class="trust-pill">Emergency Calls</span>
+            <span class="trust-pill">Rental Turnovers</span>
+            <span class="trust-pill">Inspection Repairs</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <span class="label">Maintenance & Repair Services</span>
+          <h3>One reliable team for the work your property needs</h3>
+          <ul>
+            <li>✔ Handyman repairs, installations, and maintenance calls</li>
+            <li>✔ Property management support and rent-ready turnovers</li>
+            <li>✔ Section 8 / housing inspection repair items</li>
+            <li>✔ Remodeling, painting, drywall, flooring, cleaning, and more</li>
+          </ul>
+          <div class="phone-box">
+            <div>
+              <small>Call or text</small>
+              <div class="number">412-219-6512</div>
+            </div>
+            <a class="btn btn-primary" href="#contact">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <span class="tag">Our Services</span>
+          <h3>Complete property services for homes, rentals, and investment properties</h3>
+          <p>
+            From small handyman tasks to larger remodeling projects, we help keep properties safe,
+            clean, functional, and ready for tenants, owners, or inspections.
+          </p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="icon">🛠️</div>
+            <h4>Handyman & Maintenance</h4>
+            <p>Reliable help for everyday property repairs and small installation jobs.</p>
+            <ul>
+              <li>• TV mounting</li>
+              <li>• Furniture assembly</li>
+              <li>• Door and lock repairs</li>
+              <li>• Fixtures and small repairs</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <div class="icon">🏘️</div>
+            <h4>Property Management Support</h4>
+            <p>Maintenance services for landlords, investors, and property managers.</p>
+            <ul>
+              <li>• Tenant move-in repairs</li>
+              <li>• Move-out punch lists</li>
+              <li>• Emergency maintenance</li>
+              <li>• Rent-ready preparation</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <div class="icon">✅</div>
+            <h4>Inspection-Ready Repairs</h4>
+            <p>Help preparing properties for housing, rental, or Section 8 related inspections.</p>
+            <ul>
+              <li>• Smoke detector installation</li>
+              <li>• Safety repair items</li>
+              <li>• Moisture and mold concern checks</li>
+              <li>• Housing punch-list repairs</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <div class="icon">🚨</div>
+            <h4>Emergency Calls</h4>
+            <p>Fast response for urgent issues that need attention quickly.</p>
+            <ul>
+              <li>• Leaks and water damage</li>
+              <li>• Electrical concerns</li>
+              <li>• Broken locks or doors</li>
+              <li>• Urgent property repairs</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <div class="icon">🏠</div>
+            <h4>Remodeling & Repairs</h4>
+            <p>Professional repair and improvement work for residential properties.</p>
+            <ul>
+              <li>• Kitchens and bathrooms</li>
+              <li>• Drywall and painting</li>
+              <li>• Flooring and trim</li>
+              <li>• Carpentry and framing</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <div class="icon">🧹</div>
+            <h4>Cleaning & Turnovers</h4>
+            <p>Cleaning and make-ready work for rental units, homes, and investment properties.</p>
+            <ul>
+              <li>• Deep cleaning</li>
+              <li>• Move-out cleaning</li>
+              <li>• Junk removal</li>
+              <li>• Rent-ready turnovers</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="property-focus" id="property">
+      <div class="container">
+        <div class="section-heading">
+          <span class="tag">For Property Managers & Investors</span>
+          <h3>Maintenance support that keeps properties moving</h3>
+          <p>
+            We help property managers, landlords, and investors handle the repair items that slow down rentals,
+            inspections, move-ins, move-outs, and tenant service requests.
+          </p>
+        </div>
+        <div class="focus-grid">
+          <div class="focus-panel dark">
+            <h4>Property maintenance made easier</h4>
+            <ul class="check-list">
+              <li><span>✔</span><span>Fast communication for urgent repairs</span></li>
+              <li><span>✔</span><span>Multi-trade support from one team</span></li>
+              <li><span>✔</span><span>Repairs for rental turnovers and inspections</span></li>
+              <li><span>✔</span><span>Cleaning, junk removal, and make-ready services</span></li>
+              <li><span>✔</span><span>Support for recurring maintenance needs</span></li>
+            </ul>
+          </div>
+          <div class="focus-panel light">
+            <h4>Common work we help with</h4>
+            <p>
+              We can assist with property repairs before a tenant moves in, after a tenant moves out,
+              or when a unit needs to meet housing or rental requirements.
+            </p>
+            <ul class="check-list">
+              <li><span>•</span><span>Smoke detectors and safety-related repairs</span></li>
+              <li><span>•</span><span>Doors, locks, drywall, paint, flooring, and fixtures</span></li>
+              <li><span>•</span><span>Plumbing and electrical repair items</span></li>
+              <li><span>•</span><span>Moisture concerns, mold-related checks, and repair follow-up</span></li>
+              <li><span>•</span><span>Section 8 / housing inspection punch-list support</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="express" id="express">
+      <div class="container">
+        <div class="section-heading">
+          <span class="tag">Express Services</span>
+          <h3>Small jobs, quick repairs, and maintenance calls</h3>
+          <p>
+            Not every job is a full remodel. We also handle practical handyman and maintenance tasks
+            that homeowners, tenants, and property managers need done quickly.
+          </p>
+        </div>
+        <div class="express-wrap">
+          <div class="express-card">
+            <h4>Handyman installations</h4>
+            <p>Useful installation services for homes, rentals, and office spaces.</p>
+            <ul class="simple-list">
+              <li>✔ TV mounting</li>
+              <li>✔ Ceiling fans and light fixtures</li>
+              <li>✔ Shelves, mirrors, hardware, and fixtures</li>
+              <li>✔ Furniture assembly and minor carpentry</li>
+            </ul>
+          </div>
+          <div class="express-card">
+            <h4>Repair and maintenance calls</h4>
+            <p>Quick help for everyday property problems and tenant requests.</p>
+            <ul class="simple-list">
+              <li>✔ Lock changes and door repairs</li>
+              <li>✔ Drywall patches and paint touch-ups</li>
+              <li>✔ Plumbing and electrical repair items</li>
+              <li>✔ Cleaning, haul-away, and turnover support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <div class="section-heading">
+          <span class="tag">How It Works</span>
+          <h3>Simple process, clear communication</h3>
+          <p>
+            We make it easy to request service, send photos, schedule a visit, and move the work forward.
+          </p>
+        </div>
+        <div class="process-grid">
+          <div class="process-card">
+            <strong>01</strong>
+            <h4>Contact Us</h4>
+            <p>Call, text, or email with the property details and service needed.</p>
+          </div>
+          <div class="process-card">
+            <strong>02</strong>
+            <h4>Send Details</h4>
+            <p>Share photos, address, tenant access, and any urgent concerns.</p>
+          </div>
+          <div class="process-card">
+            <strong>03</strong>
+            <h4>Schedule Service</h4>
+            <p>We coordinate timing and explain what needs to be done.</p>
+          </div>
+          <div class="process-card">
+            <strong>04</strong>
+            <h4>Get It Done</h4>
+            <p>We complete the work and help keep the property moving forward
